@@ -100,7 +100,7 @@ section{position:relative;padding:72px 0}
 .hero-stage{position:relative;height:350px;margin:18px auto 0;max-width:520px}
 .chip-float.d{display:none}
 @media(min-width:760px){.chip-float.d{display:block}}
-.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:3;margin-top:-10px}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;z-index:3;margin-top:16px}
 .stat{background:rgba(255,255,255,.92);border-radius:18px;padding:14px;box-shadow:var(--sh-s)}
 .stat .n{font-size:30px;font-weight:600;line-height:1;background:linear-gradient(180deg,#F7A23A,#E86A1C);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat p{font-size:12px;color:var(--ink-2);line-height:1.35;margin-top:6px}
@@ -472,6 +472,107 @@ footer .script{font-size:44px;display:block}
 .soft-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;background:#fff;border-radius:24px;padding:18px 20px;box-shadow:var(--sh-s);margin-top:28px;border:2px dashed var(--sky-2)}
 .soft-cta p{font-weight:600;flex:1;min-width:220px}
 .soft-cta p small{display:block;font-weight:400;color:var(--ink-2)}
+
+/* =================== ВИЗУАЛ И АНИМАЦИИ v2 =================== */
+section{overflow-x:clip}
+section>.wrap{position:relative;z-index:1}
+.blob{position:absolute;border-radius:50%;pointer-events:none;z-index:0;animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(40px,-30px) scale(1.12)}}
+/* слова заголовков выезжают снизу */
+.sw-w{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em 0 .1em;margin:-.14em 0 -.1em}
+.sw-i{display:inline-block;transform:translateY(110%);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.in .sw-i,.split-go .sw-i{transform:none}
+/* погрузчик */
+.fk{display:block;width:100%;height:auto;overflow:visible}
+.fk-beacon{animation:beacon 1s steps(2) infinite}
+@keyframes beacon{50%{opacity:.2}}
+.fk-exh circle{fill:#CBD3E1;opacity:0;transform-box:fill-box;transform-origin:center;animation:puff 2.4s ease-out infinite}
+.fk-exh circle:nth-child(2){animation-delay:.8s}.fk-exh circle:nth-child(3){animation-delay:1.6s}
+@keyframes puff{0%{opacity:.8;transform:translate(0,0) scale(.4)}100%{opacity:0;transform:translate(-20px,-34px) scale(1.8)}}
+.go .fk-wheel,.fk-stage.go .fk-wheel{animation:spin .45s linear 3}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scene{position:absolute;left:50%;bottom:0;width:470px;height:300px;transform:translateX(-50%) scale(var(--s,1));transform-origin:bottom center}
+.scene .pallet-scene{left:190px;bottom:0;transform:none;height:300px;z-index:2}
+.fk-wrap{position:absolute;left:0;bottom:-2px;width:210px;z-index:1;transform:translateX(-340px)}
+.go .fk-wrap{animation:fkIn 1.5s cubic-bezier(.25,.8,.3,1) forwards}
+@keyframes fkIn{0%{transform:translateX(-340px)}85%{transform:translateX(6px)}100%{transform:none}}
+.fk-shadow{position:absolute;left:10px;bottom:-10px;width:190px;height:22px;background:radial-gradient(closest-side,rgba(40,60,100,.25),transparent)}
+.fk-stage{position:relative;height:230px;margin-top:20px}
+.fk-stage .ground{position:absolute;left:0;right:0;bottom:6px;height:2px;background:repeating-linear-gradient(90deg,#C5CCD7 0 14px,transparent 14px 24px)}
+.fk-stage .fk-wrap2{position:absolute;left:50%;bottom:8px;width:300px;margin-left:-150px;transform:translateX(-120vw)}
+.fk-stage.go .fk-wrap2{animation:fkIn2 1.8s cubic-bezier(.25,.8,.3,1) forwards}
+@keyframes fkIn2{0%{transform:translateX(-120vw)}85%{transform:translateX(8px)}100%{transform:none}}
+.fk-stage.go .fk-fork{animation:lift 3.6s ease-in-out 1.9s infinite}
+@keyframes lift{0%,15%{transform:none}40%,70%{transform:translateY(-30px)}95%,100%{transform:none}}
+/* бегущие ленты */
+.marq{position:relative;height:170px;overflow:hidden;margin:0}
+.mq-band{position:absolute;left:-10%;width:120%;top:50%;padding:14px 0;white-space:nowrap;overflow:hidden}
+.mq-band.a{background:linear-gradient(90deg,#3E74E6,#5A8DF0);color:#fff;transform:translateY(-85%) rotate(-4deg);z-index:2;box-shadow:0 20px 40px -20px rgba(44,102,224,.7)}
+.mq-band.b{background:#fff;color:var(--blue);transform:translateY(-5%) rotate(3deg);box-shadow:var(--sh-s)}
+.mq-track{display:inline-flex;gap:26px;animation:mq 30s linear infinite;font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.06em}
+.mq-track i{font-style:normal;opacity:.55}
+.mq-band.b .mq-track{animation-direction:reverse;animation-duration:36s}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* комната в сцене «фон и событие» */
+.room{width:100%;height:auto;display:block;margin:12px 0 0}
+.room .beam{opacity:0;transition:opacity .8s}.stage.s0 .room .beam{opacity:.5}
+.room .rain{opacity:0;transition:opacity .8s}.stage.s1 .room .rain{opacity:1}
+.room .rain g{animation:rain .45s linear infinite}
+@keyframes rain{from{transform:translateY(-40px)}to{transform:none}}
+.room .notes text{opacity:0;transform-box:fill-box}
+.stage.s2 .room .notes text{animation:note 1.6s ease-out infinite}
+.room .notes text:nth-child(2){animation-delay:.55s!important}.room .notes text:nth-child(3){animation-delay:1.1s!important}
+@keyframes note{0%{opacity:0;transform:translateY(10px)}30%{opacity:1}100%{opacity:0;transform:translate(10px,-26px)}}
+.room .phone-ic{transform-box:fill-box;transform-origin:center bottom}
+.room .ring{opacity:0}
+.stage.s3 .room .phone-ic{animation:buzz .12s linear infinite}
+.stage.s3 .room .ring{animation:ringw .45s ease-in-out infinite alternate}
+.stage.s4 .room .phone-ic,.stage.s4 .room .ring{animation:none;opacity:1}.stage.s4 .room .ring{opacity:0}
+@keyframes buzz{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes ringw{from{opacity:.2}to{opacity:1}}
+.kabul{position:absolute;right:14px;top:70px;border:4px solid var(--red2);color:var(--red2);font-weight:800;font-size:24px;letter-spacing:.1em;padding:2px 14px;border-radius:10px;
+  transform:rotate(-12deg) scale(2.4);opacity:0;pointer-events:none;background:rgba(255,255,255,.75);z-index:3}
+.stage.s4 .kabul{animation:slam .45s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes slam{to{opacity:1;transform:rotate(-12deg) scale(1)}}
+/* воздушные шары, падающие звёзды, zzz */
+.bal{position:absolute;pointer-events:none;z-index:0;opacity:.32;animation:balf 9s ease-in-out infinite}
+@keyframes balf{50%{transform:translate(14px,-30px) rotate(5deg)}}
+.shoot{position:absolute;width:140px;height:2px;border-radius:2px;background:linear-gradient(90deg,#F7A23A,rgba(247,162,58,0));opacity:0;pointer-events:none;animation:shoot 7s ease-in infinite;z-index:0}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(-24deg)}4%{opacity:1}18%{opacity:0;transform:translate(-420px,190px) rotate(-24deg)}100%{opacity:0;transform:translate(-420px,190px) rotate(-24deg)}}
+.jar.r::after,.jar.h::after{position:absolute;right:16px;top:48px;font-weight:800;pointer-events:none;animation:zz 3s ease-in-out infinite}
+.jar.r::after{content:"z z Z";color:#fff}
+.jar.h::after{content:"✦ ✧ ✦";color:#F08A2A}
+@keyframes zz{0%{opacity:0;transform:translateY(10px)}50%{opacity:.7}100%{opacity:0;transform:translateY(-16px)}}
+/* конвейер в конструкторе */
+.belt{display:flex;gap:6px;align-items:flex-end;height:60px;padding:0 6px}
+.bcr{flex:1;height:40px;background:linear-gradient(170deg,#fff,#E9EDF4);border:1px solid #DCE2EC;border-radius:3px;display:flex;align-items:center;justify-content:center;
+  font-family:'Caveat',cursive;font-weight:700;color:#3B6FDA;font-size:15px;line-height:1;text-align:center;box-shadow:inset -4px -4px 8px rgba(170,180,200,.2);transition:background .3s}
+.bcr.bump{animation:bump .55s cubic-bezier(.3,1.4,.5,1)}
+@keyframes bump{0%{transform:translateY(-30px);opacity:.2}100%{transform:none;opacity:1}}
+.bcr.lit{background:linear-gradient(170deg,#FFF6DF,#FFD99A);color:#B25200}
+.rollers{height:12px;border-radius:8px;margin:0 0 14px;background:repeating-linear-gradient(90deg,#9AA4B4 0 6px,#D8DEE8 6px 14px);background-size:14px 100%;animation:roll .5s linear infinite}
+@keyframes roll{to{background-position:14px 0}}
+/* эквалайзер в караоке */
+.kl .eq{display:none;gap:2px;align-items:flex-end;height:12px}
+.kl.on .eq{display:flex}.kl.on .nn{display:none}
+.eq b{width:3px;background:#fff;border-radius:2px;animation:eq .5s ease-in-out infinite alternate}
+.eq b:nth-child(2){animation-delay:.15s}.eq b:nth-child(3){animation-delay:.3s}
+@keyframes eq{from{height:3px}to{height:12px}}
+/* мелочи */
+.tl-card.act svg{animation:bob 3s ease-in-out infinite}
+.btn{position:relative;overflow:hidden}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+.pulse-ring{position:relative;display:inline-block;border-radius:999px}
+.pulse-ring::before,.pulse-ring::after{content:"";position:absolute;inset:-4px;border-radius:999px;border:2px solid rgba(255,140,120,.8);animation:pr 2.4s ease-out infinite;pointer-events:none}
+.pulse-ring::after{animation-delay:1.2s}
+@keyframes pr{0%{opacity:1;transform:scale(.96)}100%{opacity:0;transform:scale(1.22,1.5)}}
+.hero-card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(90,141,240,.16),transparent 60%);pointer-events:none;transition:opacity .3s}
+.tilt-on{transition:transform .2s ease-out!important;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0)!important}
+.crate.still{opacity:1;transform:none;position:absolute;animation:bob 6s ease-in-out infinite}
+.final .crate.still{opacity:.22}
+@media(min-width:760px){.hero-stage{max-width:780px}}
+@media(prefers-reduced-motion:reduce){.sw-i{transform:none}.fk-wrap,.fk-stage .fk-wrap2{transform:none}}
 </style>
 </head>
 <body>
@@ -484,6 +585,8 @@ footer .script{font-size:44px;display:block}
     <linearGradient id="gb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D6E4FD"/><stop offset=".55" stop-color="#7FA7F3"/><stop offset="1" stop-color="#3A6FE0"/></linearGradient>
     <linearGradient id="gw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#DCE6F8"/></linearGradient>
     <linearGradient id="go" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD9A0"/><stop offset="1" stop-color="#F08A2A"/></linearGradient>
+    <linearGradient id="fkb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9C4F7"/><stop offset=".5" stop-color="#6F9BEE"/><stop offset="1" stop-color="#3C6FDC"/></linearGradient>
+    <pattern id="hz" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="8" fill="#F7C23A"/><rect x="4" width="4" height="8" fill="#1E222B"/></pattern>
   </defs>
   <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
   <symbol id="i-sound" viewBox="0 0 24 24"><path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></symbol>
@@ -517,7 +620,7 @@ footer .script{font-size:44px;display:block}
 <section class="hero">
   <div class="wrap">
     <div class="hero-card">
-      <div class="wm" aria-hidden="true"><span>Geçen yaz</span><span>Hayalim var</span><span>Birden…</span></div>
+      <div class="wm" data-par="-.12" aria-hidden="true"><span>Geçen yaz</span><span>Hayalim var</span><span>Birden…</span></div>
       <p class="eyebrow" style="text-align:center;position:relative;z-index:2">Уровень <b>B1</b> · 15 минут · озвучка каждой фразы</p>
       <h1 style="margin-top:14px">Расскажи о&nbsp;себе <strong>по-турецки</strong></h1>
       <p class="sub">Опыт, события, мечты. Четыре инструмента, чтобы тебя дослушали до&nbsp;конца, а&nbsp;не&nbsp;перешли на&nbsp;английский.</p>
@@ -527,22 +630,25 @@ footer .script{font-size:44px;display:block}
         <div class="chip-float" style="right:0;top:6px;animation-delay:1.1s"><small>фон</small>gidiyordum</div>
         <div class="chip-float d" style="left:0;bottom:90px;animation-delay:2s"><small>опыт</small>Hiç gittin mi?</div>
         <div class="chip-float d" style="right:0;bottom:140px;animation-delay:.6s"><small>мечта</small>Keşke gitseydim</div>
+        <div class="scene" id="heroScene">
+        <div class="fk-wrap" id="heroFk"><div class="fk-shadow"></div></div>
         <div class="pallet-scene">
           <div class="shadow-floor"></div>
           <div class="pallet"></div>
-          <div class="crate" style="--w:118px;--h:78px;left:4px;bottom:22px;animation-delay:.1s"><i class="tape"></i><span>Anlat!</span></div>
-          <div class="crate" style="--w:118px;--h:78px;left:122px;bottom:22px;animation-delay:.35s"><i class="tape"></i><span>Anlat!</span></div>
-          <div class="crate" style="--w:118px;--h:78px;left:4px;bottom:101px;animation-delay:.6s"><i class="tape"></i><span>Hayalim var!</span></div>
-          <div class="crate" style="--w:118px;--h:78px;left:122px;bottom:101px;animation-delay:.85s"><i class="tape"></i><span>Birden…</span></div>
-          <div class="crate" style="--w:118px;--h:78px;left:63px;bottom:180px;animation-delay:1.1s"><i class="tape"></i><span>Anlat!</span></div>
+          <div class="crate" style="--w:118px;--h:78px;left:4px;bottom:22px;animation-delay:1.3s"><i class="tape"></i><span>Anlat!</span></div>
+          <div class="crate" style="--w:118px;--h:78px;left:122px;bottom:22px;animation-delay:1.55s"><i class="tape"></i><span>Anlat!</span></div>
+          <div class="crate" style="--w:118px;--h:78px;left:4px;bottom:101px;animation-delay:1.8s"><i class="tape"></i><span>Hayalim var!</span></div>
+          <div class="crate" style="--w:118px;--h:78px;left:122px;bottom:101px;animation-delay:2.05s"><i class="tape"></i><span>Birden…</span></div>
+          <div class="crate" style="--w:118px;--h:78px;left:63px;bottom:180px;animation-delay:2.3s"><i class="tape"></i><span>Anlat!</span></div>
+        </div>
         </div>
       </div>
 
       <div class="hero-stats">
-        <div class="stat"><div class="n">-dı</div><p>события: что случилось</p></div>
-        <div class="stat"><div class="n">-ıyordu</div><p>фон: что происходило вокруг</p></div>
-        <div class="stat"><div class="n">hiç</div><p>опыт: было или ни&nbsp;разу</p></div>
-        <div class="stat"><div class="n">keşke</div><p>мечты и&nbsp;сожаления</p></div>
+        <div class="stat rv-s"><div class="n">-dı</div><p>события: что случилось</p></div>
+        <div class="stat rv-s"><div class="n">-ıyordu</div><p>фон: что происходило вокруг</p></div>
+        <div class="stat rv-s"><div class="n">hiç</div><p>опыт: было или ни&nbsp;разу</p></div>
+        <div class="stat rv-s"><div class="n">keşke</div><p>мечты и&nbsp;сожаления</p></div>
       </div>
       <div class="hero-cta">
         <a class="btn btn-red btn-lg btn-glow" href="#intro">Начать разбор</a>
@@ -572,6 +678,11 @@ footer .script{font-size:44px;display:block}
     </div>
   </div>
 </section>
+
+<div class="marq" aria-hidden="true">
+  <div class="mq-band b"><div class="mq-track" data-mq="Событие ✦ Фон ✦ Опыт ✦ Мечта ✦ Сожаление ✦ История ✦"></div></div>
+  <div class="mq-band a"><div class="mq-track" data-mq="Geçen yaz ✦ Birden ✦ Hiç gittin mi? ✦ Hayalim var ✦ Keşke ✦ Anlat! ✦"></div></div>
+</div>
 
 <!-- ================= МОДУЛИ ================= -->
 <section style="padding-top:20px">
@@ -633,12 +744,14 @@ footer .script{font-size:44px;display:block}
       <p><b>Без декораций история превращается в протокол. Без события — в прогноз погоды.</b></p>
     </div>
 
-    <div class="stage rv">
+    <div class="stage rv" id="stage">
       <div class="flash" id="flash"></div>
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
         <p class="eyebrow">Сцена · нажми и смотри</p>
         <button class="btn btn-red btn-sm" id="scPlay"><svg width="14" height="14"><use href="#i-play"/></svg>Сыграть сцену</button>
       </div>
+      <svg class="room" id="room" viewBox="0 0 340 128" aria-hidden="true"></svg>
+      <div class="kabul">KABUL!</div>
       <div class="axis">
         <div class="band" id="b0" style="bottom:98px"><small>oturuyordum · сидел</small></div>
         <div class="band" id="b1" style="bottom:70px;animation-duration:.6s"><small>yağıyordu · шёл</small></div>
@@ -792,6 +905,7 @@ footer .script{font-size:44px;display:block}
       <div class="rv" id="slots"></div>
       <div class="out rv" id="out">
         <div class="ttl"><p class="eyebrow">Твоя история</p><span class="script" style="font-size:26px">Anlat!</span></div>
+        <div class="belt" id="belt"></div><div class="rollers"></div>
         <div id="outLines"></div>
         <div class="actions">
           <button class="btn btn-red btn-sm" id="bListen"><svg width="14" height="14"><use href="#i-play"/></svg>Слушать</button>
@@ -847,6 +961,11 @@ footer .script{font-size:44px;display:block}
   </div>
 </section>
 
+<div class="marq" aria-hidden="true">
+  <div class="mq-band b"><div class="mq-track" data-mq="128 гайдов ✦ 131 блок лексики ✦ 109 интерактивов ✦ 1716 материалов ✦"></div></div>
+  <div class="mq-band a"><div class="mq-track" data-mq="Alterna Timur ✦ A0 → C1 ✦ $30 ✦ Один раз ✦ Навсегда ✦"></div></div>
+</div>
+
 <!-- =====================================================================
      ПРОДАЮЩИЙ БЛОК
      ===================================================================== -->
@@ -873,15 +992,11 @@ footer .script{font-size:44px;display:block}
   <!-- ---- о платформе ---- -->
   <div class="wrap" style="margin-top:60px">
     <div class="panel rv" style="background:linear-gradient(180deg,#fff,#F3F7FF)">
-      <div class="wm" aria-hidden="true"><span>A0 A1 A2</span><span>B1 B2 C1</span><span>Alterna</span></div>
+      <div class="wm" data-par="-.1" aria-hidden="true"><span>A0 A1 A2</span><span>B1 B2 C1</span><span>Alterna</span></div>
       <p class="eyebrow" style="position:relative">01 · О платформе</p>
       <h2 class="h2" style="position:relative">Alterna Timur <strong>A0 → C1</strong></h2>
       <p class="lead" style="position:relative">Одно место вместо учебника, сорока вкладок и сохранёнок. Открываешь свой уровень и берёшь. <b>Всё уже собрано. Искать не надо.</b></p>
-      <div class="crate-row" aria-hidden="true">
-        <div class="crate" style="--w:96px;--h:66px"><i class="tape"></i><span style="font-size:22px">A0-A2</span></div>
-        <div class="crate" style="--w:96px;--h:66px"><i class="tape"></i><span style="font-size:22px">B1-B2</span></div>
-        <div class="crate" style="--w:96px;--h:66px"><i class="tape"></i><span style="font-size:22px">C1!</span></div>
-      </div>
+      <div class="fk-stage" id="saleFk" aria-hidden="true"><div class="ground"></div><div class="fk-wrap2"></div></div>
     </div>
   </div>
 
@@ -1038,12 +1153,15 @@ footer .script{font-size:44px;display:block}
   <!-- ---- финал ---- -->
   <div class="wrap" style="margin-top:70px;padding-bottom:30px" id="finalCta">
     <div class="final rv">
-      <div class="wm" aria-hidden="true"><span>Hayalin ne?</span><span>Bugün</span><span>başla</span></div>
+      <div class="wm" data-par="-.1" aria-hidden="true"><span>Hayalin ne?</span><span>Bugün</span><span>başla</span></div>
+      <div class="crate still" style="--w:90px;--h:60px;left:6%;top:14%"><span style="font-size:20px">A1</span></div>
+      <div class="crate still" style="--w:80px;--h:54px;right:8%;top:38%;animation-delay:-2s"><span style="font-size:20px">B2</span></div>
+      <div class="crate still" style="--w:70px;--h:48px;left:10%;bottom:12%;animation-delay:-4s"><span style="font-size:20px">C1</span></div>
       <h2>Hayalin ne? <b>Какая у тебя мечта?</b></h2>
       <p style="position:relative;opacity:.9;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto">Переехать. Сдать экзамен. Спорить с продавцом на базаре и выигрывать. Путь до неё уже собран.</p>
       <div class="p">$30</div>
       <p style="position:relative;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:13px;opacity:.85">Один раз · доступ навсегда</p>
-      <div style="margin-top:26px;position:relative"><a class="btn btn-red btn-lg btn-glow" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener">Приобрести доступ</a></div>
+      <div style="margin-top:26px;position:relative"><span class="pulse-ring"><a class="btn btn-red btn-lg btn-glow" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener">Приобрести доступ</a></span></div>
       <div class="qr"><img src="assets/qr.svg" alt="QR-код на страницу покупки"></div>
       <p style="position:relative;font-size:13px;opacity:.8;margin-top:10px">Наведи камеру, откроется страница оплаты</p>
       <p style="position:relative;font-size:22px;font-weight:800;margin-top:26px">Bir gün değil. Bugün.</p>
@@ -1292,12 +1410,13 @@ const MODS = [
   const box = $('#scLines');
   L.forEach(([s, t]) => box.append(el('div', 'line', `<span class="tag ${t}">${t === 'bg' ? 'фон' : 'событие'}</span><p><b>${TR[s]}</b><br><span class="ru">${RUT[s]}</span></p>`)));
   const lines = [...box.children], parts = ['#b0','#b1','#b2','#z0','#z1'].map(s => $(s)), flash = $('#flash');
-  function reset(){ lines.forEach(l => l.classList.remove('on')); parts.forEach(p => p.classList.remove('on')); }
+  const stage = $('#stage');
+  function reset(){ lines.forEach(l => l.classList.remove('on')); parts.forEach(p => p.classList.remove('on')); stage.classList.remove('s0','s1','s2','s3','s4'); }
   $('#scPlay').onclick = function(){
     reset();
     AE.seq(L.map(x => T(x[0])), this, i => {
       if (i < 0) return;
-      lines[i].classList.add('on'); parts[i].classList.add('on');
+      lines[i].classList.add('on'); parts[i].classList.add('on'); stage.classList.add('s' + i);
       if (i >= 3){ flash.classList.remove('go'); void flash.offsetWidth; flash.classList.add('go'); }
     });
   };
@@ -1448,9 +1567,13 @@ const MODS = [
   S.forEach(([k, lb, tag, opts]) => {
     const s = el('div', 'slot', `<div class="lb">${lb} <i>${tag}</i></div><div class="opts"></div>`);
     const o = s.querySelector('.opts');
-    opts.forEach((t, i) => { const b = el('button', 'opt', t); b.onclick = () => { sel[k] = i; mark(); render(k); }; o.append(b); });
+    opts.forEach((t, i) => { const b = el('button', 'opt', t); b.onclick = () => { sel[k] = i; mark(); render(k); bump(k); }; o.append(b); });
     slots.append(s);
   });
+  const belt = $('#belt'), BL = ['Ne zaman','-ıyordu','Birden','Sonra','Final'];
+  BL.forEach(t => belt.append(el('div', 'bcr', t)));
+  const crates = [...belt.children];
+  function bump(k){ const c = crates[S.findIndex(x => x[0] === k)]; c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }
   function mark(){ slots.querySelectorAll('.slot').forEach((s, j) => s.querySelectorAll('.opt').forEach((b, i) => b.classList.toggle('on', sel[S[j][0]] === i))); }
   function lines(){ return [['ab-' + sel.a + '-' + sel.b, RUT['a' + sel.a] + ' ' + RUT['b' + sel.b]], ['c' + sel.c, RUT['c' + sel.c]], ['d' + sel.d, RUT['d' + sel.d]], ['e' + sel.e, RUT['e' + sel.e]]]; }
   let typing = 0;
@@ -1469,14 +1592,16 @@ const MODS = [
   }
   $('#bListen').onclick = function(){
     const L = lines(), rows = [...outL.children];
-    AE.seq(L.map(x => T(x[0])), this, i => rows.forEach((r, j) => r.classList.toggle('hl', i === j)));
+    const MAP = [[0,1],[2],[3],[4]];
+    AE.seq(L.map(x => T(x[0])), this, i => { rows.forEach((r, j) => r.classList.toggle('hl', i === j));
+      crates.forEach((c, j) => c.classList.toggle('lit', i >= 0 && MAP[i].includes(j))); });
   };
   $('#bRand').onclick = () => {
     let t = 0; const iv = setInterval(() => {
       S.forEach(([k]) => sel[k] = Math.floor(Math.random() * 3)); mark();
       slots.querySelectorAll('.opt.on').forEach(b => b.classList.add('spin'));
       setTimeout(() => slots.querySelectorAll('.opt.spin').forEach(b => b.classList.remove('spin')), 90);
-      if (++t > 9){ clearInterval(iv); render(); }
+      if (++t > 9){ clearInterval(iv); render(); crates.forEach((c, j) => setTimeout(() => { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); }, j * 90)); }
     }, 90);
   };
   S.forEach(([k]) => sel[k] = Math.floor(Math.random() * 3)); mark(); render();
@@ -1486,7 +1611,7 @@ const MODS = [
 (() => {
   const box = $('#kar'), ids = ['st0','st1','st2','st3','st4','st5','st6','st7'];
   const W = /(büyüdüm|olmaktı|girdim|çalıştım|başladı|oturuyordu|değiştirdim|oldum|hazırlandım|kazandım|yaşıyordum|zordu|okuyorum|olmak|Keşke|başlasaydım|ilk kez)/g;
-  ids.forEach((s, i) => { const r = el('div', 'kl', `<span class="num">${i + 1}</span><p>${TR[s].replace(W, '<span class="w">$1</span>')}<span class="ru">${RUT[s]}</span></p>`);
+  ids.forEach((s, i) => { const r = el('div', 'kl', `<span class="num"><span class="nn">${i + 1}</span><i class="eq"><b></b><b></b><b></b></i></span><p>${TR[s].replace(W, '<span class="w">$1</span>')}<span class="ru">${RUT[s]}</span></p>`);
     r.onclick = () => AE.tr(s, null, j => rows.forEach((x, k) => x.classList.toggle('on', j === 0 && k === i))); box.append(r); });
   const rows = [...box.children];
   $('#karPlay').onclick = function(){
@@ -1566,6 +1691,153 @@ function confetti(){
     $('#dVal').textContent = per >= 1 ? '$' + per.toFixed(2) : Math.round(per * 100) + '¢';
     $('#dCmp').textContent = per <= .25 ? 'в день. Дешевле стакана çay' : 'в день'; }
   r.oninput = calc; calc();
+})();
+
+/* =====================================================================
+   ВИЗУАЛ v2: погрузчик, ленты, заголовки, комната, параллакс, наклон
+   ===================================================================== */
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+function forklift(load){
+  return `<svg class="fk" viewBox="0 0 240 170">
+  <g class="fk-exh"><circle cx="16" cy="66" r="5"/><circle cx="16" cy="66" r="5"/><circle cx="16" cy="66" r="5"/></g>
+  <rect x="10" y="64" width="6" height="12" rx="2" fill="#2B303B"/>
+  <path d="M54 72 L60 18 M116 72 L112 18" stroke="#2B303B" stroke-width="5" stroke-linecap="round"/>
+  <rect x="52" y="12" width="68" height="8" rx="3" fill="#2B303B"/>
+  <rect class="fk-beacon" x="80" y="4" width="10" height="8" rx="3" fill="#F7A23A"/>
+  <path d="M68 72 v-20 q0-6 6-6 h10 v26z" fill="#2B303B"/>
+  <path d="M100 50 l10 22" stroke="#2B303B" stroke-width="4" stroke-linecap="round"/><circle cx="99" cy="48" r="5" fill="none" stroke="#2B303B" stroke-width="3"/>
+  <path d="M16 84 q0-12 12-12 h100 q10 0 10 10 v46 h-122z" fill="url(#fkb)"/>
+  <path d="M16 84 q0-12 12-12 h8 v56 h-20z" fill="#2E5FCF"/>
+  <rect x="16" y="98" width="122" height="5" fill="#fff" opacity=".35"/>
+  <rect x="44" y="108" width="40" height="8" rx="4" fill="#fff" opacity=".25"/>
+  <rect x="140" y="14" width="10" height="122" rx="2" fill="#2B303B"/>
+  <rect x="151" y="20" width="5" height="116" fill="#4A5160"/>
+  <rect x="140" y="120" width="16" height="12" fill="url(#hz)"/>
+  <g class="fk-fork">
+    <rect x="156" y="82" width="7" height="50" rx="1" fill="#2B303B"/>
+    <rect x="156" y="126" width="82" height="6" rx="2" fill="#2B303B"/>
+    ${load || ''}
+  </g>
+  <g class="fk-wheel" style="transform-origin:112px 146px"><circle cx="112" cy="146" r="22" fill="#1E222B"/><circle cx="112" cy="146" r="11" fill="#C9D3E3"/><path d="M112 136v20M102 146h20" stroke="#1E222B" stroke-width="3"/></g>
+  <g class="fk-wheel" style="transform-origin:40px 150px"><circle cx="40" cy="150" r="18" fill="#1E222B"/><circle cx="40" cy="150" r="8" fill="#C9D3E3"/><path d="M40 142v16M32 150h16" stroke="#1E222B" stroke-width="3"/></g>
+</svg>`;
+}
+function box(y, label){
+  return `<rect x="162" y="${y}" width="70" height="26" fill="url(#gw)" stroke="#D5DCE7"/><line x1="197" y1="${y}" x2="197" y2="${y + 26}" stroke="#C3CBD8"/>
+  <text x="197" y="${y + 18}" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="17" fill="#3B6FDA" transform="rotate(-6 197 ${y + 13})">${label}</text>`;
+}
+$('#heroFk').insertAdjacentHTML('beforeend', forklift());
+document.querySelector('#saleFk .fk-wrap2').innerHTML = forklift(
+  `<rect x="160" y="118" width="76" height="8" fill="#D9B98E"/><rect x="164" y="121" width="10" height="5" fill="#8A6A45"/><rect x="221" y="121" width="10" height="5" fill="#8A6A45"/>
+   ${box(92, 'A0 → A2')}${box(66, 'B1 → B2')}${box(40, 'C1!')}
+   <path d="M162 40 l8 -7 h70 l-8 7z" fill="#F6F8FB" stroke="#D5DCE7"/><path d="M232 40 l8 -7 v78 l-8 7z" fill="#CDD4DF"/>`);
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('go'); o.disconnect(); } }), { threshold:.4 }).observe($('#saleFk'));
+
+/* сцена hero масштабируется под ширину экрана */
+(() => {
+  const stage = $('#heroStage'), scene = $('#heroScene');
+  function fit(){ const mob = innerWidth < 760, s = Math.min(1, stage.clientWidth / 480);
+    scene.style.setProperty('--s', s); stage.style.height = Math.round(300 * s + (mob ? 66 : 40)) + 'px'; }
+  fit(); addEventListener('resize', fit);
+})();
+
+/* бегущие ленты: дублируем текст для бесшовной петли */
+document.querySelectorAll('[data-mq]').forEach(t => {
+  const one = t.dataset.mq.split('✦').filter(x => x.trim()).map(x => `<span>${x.trim()}</span><i>✦</i>`).join('');
+  t.innerHTML = one + one + one + one;
+});
+
+/* заголовки: каждое слово выезжает снизу */
+function splitWords(root){
+  [...root.childNodes].forEach(n => {
+    if (n.nodeType === 3){
+      const f = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(p => { if (!p) return;
+        if (/^\s+$/.test(p)) f.append(document.createTextNode(p));
+        else { const o = el('span', 'sw-w'), i = el('span', 'sw-i'); i.textContent = p; o.append(i); f.append(o); } });
+      n.replaceWith(f);
+    } else if (n.nodeType === 1 && n.tagName !== 'BR' && !n.classList.contains('say')) splitWords(n);
+  });
+}
+if (!RM){
+  document.querySelectorAll('.h2, .punch, .hero h1, .final h2').forEach(h => { splitWords(h);
+    h.querySelectorAll('.sw-i').forEach((w, k) => w.style.transitionDelay = (120 + k * 55) + 'ms'); });
+  setTimeout(() => document.querySelector('.hero h1').classList.add('split-go'), 150);
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('split-go'); o.unobserve(e.target); } }), { threshold:.3 }).observe($('.final h2'));
+}
+
+/* комната: окно с дождём, лампа, книга, наушники, телефон */
+(() => {
+  let rain = '';
+  for (let y = -40; y < 130; y += 40) for (let x = 6; x < 124; x += 11) rain += `M${x + (x % 2 ? 0 : 5)} ${y + (x % 3) * 9} l-5 14 `;
+  $('#room').innerHTML = `
+  <defs><clipPath id="winc"><rect x="14" y="8" width="96" height="84" rx="6"/></clipPath></defs>
+  <rect x="14" y="8" width="96" height="84" rx="6" fill="#B8CDF5"/>
+  <g clip-path="url(#winc)"><circle cx="40" cy="30" r="16" fill="#fff" opacity=".6"/><circle cx="62" cy="26" r="20" fill="#fff" opacity=".6"/><circle cx="86" cy="32" r="14" fill="#fff" opacity=".6"/>
+    <g class="rain"><g><path d="${rain}" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/></g></g></g>
+  <rect x="14" y="8" width="96" height="84" rx="6" fill="none" stroke="#fff" stroke-width="5"/><path d="M62 8v84M14 50h96" stroke="#fff" stroke-width="4"/>
+  <rect x="0" y="112" width="340" height="7" rx="3" fill="#9DB4DB"/><rect x="20" y="119" width="6" height="9" fill="#9DB4DB"/><rect x="314" y="119" width="6" height="9" fill="#9DB4DB"/>
+  <path class="beam" d="M178 52 L140 112 L236 112 z" fill="#FFE39A"/>
+  <path d="M146 112 h26" stroke="#2B303B" stroke-width="5" stroke-linecap="round"/><path d="M159 112 L148 72 L168 46" stroke="#2B303B" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M160 38 l26 -7 l7 22 z" fill="url(#go)"/>
+  <rect x="196" y="98" width="48" height="14" rx="2" fill="url(#gb)"/><rect x="200" y="92" width="42" height="6" rx="1" fill="#fff" stroke="#C9D6EE"/>
+  <g><path d="M254 110 q0 -28 22 -28 q22 0 22 28" stroke="#2B303B" stroke-width="4" fill="none"/><rect x="248" y="98" width="11" height="15" rx="4" fill="#3A6FE0"/><rect x="293" y="98" width="11" height="15" rx="4" fill="#3A6FE0"/></g>
+  <g class="notes" fill="#3A6FE0" font-size="18" font-weight="700"><text x="262" y="74">♪</text><text x="284" y="66">♫</text><text x="272" y="58">♪</text></g>
+  <g class="phone-ic"><rect x="312" y="78" width="18" height="34" rx="4" fill="#1E222B"/><rect x="315" y="82" width="12" height="24" rx="2" fill="#6F9BEE"/></g>
+  <path class="ring" d="M334 86 q6 9 0 18 M338 80 q11 15 0 30 M308 86 q-6 9 0 18" stroke="#E3232C" fill="none" stroke-width="2.5" stroke-linecap="round"/>`;
+})();
+
+/* фоновые пятна в секциях */
+document.querySelectorAll('main > section:not(.hero)').forEach((s, i) => {
+  const c = [['rgba(90,141,240,.16)','rgba(255,170,110,.12)'],['rgba(255,170,110,.12)','rgba(90,141,240,.14)']][i % 2];
+  [[c[0], i % 2 ? '-120px' : 'auto', i % 2 ? 'auto' : '-140px', '8%', 460],[c[1], i % 2 ? 'auto' : '-100px', i % 2 ? '-120px' : 'auto', '62%', 380]].forEach(([col, l, r, t, sz], k) => {
+    const b = el('div', 'blob'); Object.assign(b.style, { background:`radial-gradient(closest-side, ${col}, transparent)`, width:sz + 'px', height:sz + 'px', left:l, right:r, top:t, animationDelay:(-k * 7 - i) + 's' });
+    b.dataset.par = k ? '.08' : '-.06'; s.prepend(b); });
+});
+
+/* воздушные шары в «опыте», падающие звёзды в «keşke» */
+[['right:4%;top:120px;width:74px;height:74px','0s','.1'],['left:2%;top:46%;width:52px;height:52px','-3s','-.08'],['right:10%;top:74%;width:40px;height:40px','-6s','.14']].forEach(([st, d, p]) => {
+  const b = el('div', 'bal', '<svg width="100%" height="100%"><use href="#i-balloon"/></svg>'); b.style.cssText = st + ';animation-delay:' + d; b.dataset.par = p; $('#deneyim').prepend(b); });
+[['right:-40px;top:60px','0s'],['right:20%;top:10px','-2.4s'],['right:-10px;top:45%','-4.6s']].forEach(([st, d]) => {
+  const x = el('i', 'shoot'); x.style.cssText = st + ';animation-delay:' + d; $('#keske').prepend(x); });
+
+/* параллакс: свойство translate не мешает другим трансформациям */
+if (!RM){
+  const P = [...document.querySelectorAll('[data-par]')]; let tick = false;
+  function par(){ tick = false; const vh = innerHeight;
+    P.forEach(e => { const r = e.getBoundingClientRect(); if (r.bottom < -200 || r.top > vh + 200) return;
+      e.style.translate = '0 ' + ((r.top + r.height / 2 - vh / 2) * +e.dataset.par).toFixed(1) + 'px'; }); }
+  addEventListener('scroll', () => { if (!tick){ tick = true; requestAnimationFrame(par); } }, { passive:true }); par();
+}
+
+/* свечение за курсором в hero, 3D-наклон карточек, рябь на кнопках */
+if (FINE && !RM){
+  const hc = $('.hero-card');
+  hc.addEventListener('pointermove', e => { const r = hc.getBoundingClientRect();
+    hc.style.setProperty('--mx', (e.clientX - r.left) + 'px'); hc.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+  document.querySelectorAll('.wcard,.tar,.in-item,.stat,.cn,.ks-card,.shot,.author,.calc,.tl-card').forEach(c => {
+    c.addEventListener('pointermove', e => { if (c.classList.contains('rv') && !c.classList.contains('in')) return;
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.classList.add('tilt-on'); c.style.setProperty('--ry', (x * 8).toFixed(2) + 'deg'); c.style.setProperty('--rx', (-y * 8).toFixed(2) + 'deg'); });
+    c.addEventListener('pointerleave', () => { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); setTimeout(() => c.classList.remove('tilt-on'), 220); });
+  });
+}
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest('.btn'); if (!b) return;
+  const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, w = el('span', 'ripple');
+  Object.assign(w.style, { width:d + 'px', height:d + 'px', left:(e.clientX - r.left - d / 2) + 'px', top:(e.clientY - r.top - d / 2) + 'px' });
+  b.append(w); setTimeout(() => w.remove(), 650);
+});
+
+/* телефоны листаются сами, пока их не тронули */
+(() => {
+  const ph = $('#phones'); let user = false, vis = false;
+  ['pointerdown','wheel','touchstart'].forEach(ev => ph.addEventListener(ev, () => user = true, { passive:true }));
+  new IntersectionObserver(es => es.forEach(e => vis = e.isIntersecting), { threshold:.5 }).observe(ph);
+  setInterval(() => { if (user || !vis || RM) return; const w = ph.firstElementChild.offsetWidth + 18;
+    ph.scrollTo({ left: ph.scrollLeft + w >= ph.scrollWidth - ph.clientWidth + 4 ? 0 : ph.scrollLeft + w, behavior:'smooth' }); }, 2600);
 })();
 
 watch();
