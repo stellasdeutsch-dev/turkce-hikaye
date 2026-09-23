@@ -573,6 +573,16 @@ section>.wrap{position:relative;z-index:1}
 .final .crate.still{opacity:.22}
 @media(min-width:760px){.hero-stage{max-width:780px}}
 @media(prefers-reduced-motion:reduce){.sw-i{transform:none}.fk-wrap,.fk-stage .fk-wrap2{transform:none}}
+.btn-wa{background:linear-gradient(180deg,#34DC73,#1FAF55);color:#fff;box-shadow:0 14px 30px -12px rgba(31,175,85,.65)}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-wa svg{width:20px;height:20px;flex:none}
+.kz{display:grid;gap:14px;align-items:center;background:#fff;border-radius:26px;padding:20px;box-shadow:var(--sh-s);border:2px solid #CFF3DC;margin-top:22px;position:relative;overflow:hidden}
+.kz .flag{font-size:30px;line-height:1}
+.kz b{font-size:17px}
+.kz p{font-size:14px;color:var(--ink-2);margin-top:4px}
+@media(min-width:760px){.kz{grid-template-columns:auto 1fr auto;padding:22px 28px}}
+.final .kz-line{position:relative;margin-top:18px;font-size:14px;opacity:.92}
+.final .kz-line a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #34DC73;padding-bottom:1px}
 </style>
 </head>
 <body>
@@ -601,6 +611,7 @@ section>.wrap{position:relative;z-index:1}
   <symbol id="i-wave" viewBox="0 0 80 80"><circle cx="40" cy="40" r="30" fill="url(#gw)"/><path d="M10 46c8-8 14 8 22 0s14 8 22 0 12 6 16 2v10a30 30 0 0 1-60 0z" fill="url(#gb)"/><circle cx="54" cy="24" r="8" fill="url(#go)"/></symbol>
   <symbol id="i-medal" viewBox="0 0 80 80"><path d="M26 6h12l6 20H32zM54 6H42l-6 20h12z" fill="url(#gb)"/><circle cx="40" cy="48" r="22" fill="url(#go)"/><circle cx="40" cy="48" r="15" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/><text x="40" y="55" font-size="20" font-weight="800" text-anchor="middle" fill="#fff" font-family="Montserrat">5</text></symbol>
   <symbol id="i-globe" viewBox="0 0 80 80"><circle cx="40" cy="40" r="30" fill="url(#gb)"/><path d="M10 40h60M40 10c-12 14-12 46 0 60M40 10c12 14 12 46 0 60M16 24h48M16 56h48" stroke="#fff" stroke-width="2.4" fill="none" opacity=".7"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></symbol>
   <symbol id="i-plane" viewBox="0 0 80 80"><path d="M6 38L74 8 60 70 40 52 30 66l-2-20 34-26-40 22z" fill="url(#gw)" stroke="#9DB9F0" stroke-width="1.5"/><path d="M28 46l2 20 10-14" fill="#C4D6F6"/></symbol>
 </defs>
 </svg>
@@ -1089,6 +1100,11 @@ section>.wrap{position:relative;z-index:1}
         <a class="btn btn-red btn-glow" style="width:100%;margin-top:14px" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener">Приобрести</a>
       </div>
     </div>
+    <div class="kz rv">
+      <span class="flag">🇰🇿</span>
+      <div><b>Из Казахстана и оплата не проходит?</b><p>Если карта казахстанского банка не проходит на lava.top, напиши мне в WhatsApp. Купишь удобным способом, доступ открою сам.</p></div>
+      <a class="btn btn-wa" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Купить через WhatsApp</a>
+    </div>
     <p class="muted rv" style="text-align:center;font-size:14px;margin-top:16px">С репетитором платформа не спорит. Она даёт базу, и&nbsp;часы с&nbsp;репетитором уходят на&nbsp;разговор, а&nbsp;не&nbsp;на&nbsp;объяснение окончаний.</p>
   </div>
 
@@ -1132,6 +1148,7 @@ section>.wrap{position:relative;z-index:1}
       <details class="rv"><summary>Это подписка?</summary><p>Нет. $30 один раз, доступ навсегда. Никаких продлений и списаний.</p></details>
       <details class="rv"><summary>Как я получу доступ?</summary><p>Оплата проходит на lava.top, после неё ты получаешь доступ к платформе. Если что-то не пришло, напиши мне в Telegram, разберёмся.</p></details>
       <details class="rv"><summary>С телефона удобно?</summary><p>Да, всё открывается в браузере телефона. Скриншоты выше сняты с iPhone.</p></details>
+      <details class="rv"><summary>Я из Казахстана, и оплата не проходит</summary><p>Напиши мне в <a href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">WhatsApp</a>. Купишь удобным способом, доступ открою сам.</p></details>
       <details class="rv"><summary>Не хочу покупать кота в мешке</summary><p>Правильно. Напиши мне до покупки. Покажу, что внутри, и честно скажу, подойдёт ли тебе.</p></details>
       <details class="rv"><summary>Я уже на B1. Там есть что-то для меня?</summary><p>Да. Отдельный раздел B1 · B2 · C1: причастия, косвенная речь, модальность, связность текста, академический и деловой стиль. Плюс книги, подкасты и фильмы с фильтром по уровню.</p></details>
     </div>
@@ -1164,6 +1181,7 @@ section>.wrap{position:relative;z-index:1}
       <div style="margin-top:26px;position:relative"><span class="pulse-ring"><a class="btn btn-red btn-lg btn-glow" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener">Приобрести доступ</a></span></div>
       <div class="qr"><img src="assets/qr.svg" alt="QR-код на страницу покупки"></div>
       <p style="position:relative;font-size:13px;opacity:.8;margin-top:10px">Наведи камеру, откроется страница оплаты</p>
+      <p class="kz-line">🇰🇿 Из Казахстана и оплата не проходит? <a href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener">Купить через WhatsApp</a></p>
       <p style="position:relative;font-size:22px;font-weight:800;margin-top:26px">Bir gün değil. Bugün.</p>
       <p style="position:relative;opacity:.85">Не когда-нибудь. Сегодня.</p>
     </div>
