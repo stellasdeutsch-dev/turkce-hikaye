@@ -583,6 +583,21 @@ section>.wrap{position:relative;z-index:1}
 @media(min-width:760px){.kz{grid-template-columns:auto 1fr auto;padding:22px 28px}}
 .final .kz-line{position:relative;margin-top:18px;font-size:14px;opacity:.92}
 .final .kz-line a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #34DC73;padding-bottom:1px}
+.wa-ic{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;flex:none;color:#fff;
+  background:linear-gradient(180deg,#34DC73,#1FAF55);box-shadow:0 10px 22px -10px rgba(31,175,85,.8);transition:transform .2s}
+.wa-ic svg{width:22px;height:22px}.wa-ic:hover{transform:scale(1.08)}
+.nav .wa-ic{margin-left:auto}.nav .wa-ic+.btn{margin-left:10px}
+@media(min-width:900px){.nav .wa-ic{margin-left:18px}}
+.sticky .wa-ic{margin-left:auto;width:46px;height:46px}.sticky .wa-ic+.btn{margin-left:0}
+.wa-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#1FAF55;text-decoration:none}
+.wa-link svg{width:18px;height:18px}
+.tar.best .wa-link{color:#fff;justify-content:center;width:100%;margin-top:12px;opacity:.92}
+.hero-wa{display:flex;justify-content:center;margin-top:14px;position:relative;z-index:3}
+.tg-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;position:relative}
+.sticky .t{min-width:0;flex:1}.sticky .t b{font-size:16px;white-space:nowrap}.sticky .t .sub{white-space:nowrap}
+@media(max-width:420px){.sticky .t .sub{display:none}}
+.sticky .btn{padding:0 16px;letter-spacing:.06em}
+@media(max-width:420px){.logo small{display:none}}
 </style>
 </head>
 <body>
@@ -621,6 +636,7 @@ section>.wrap{position:relative;z-index:1}
     <nav class="nav-links">
       <a href="#olay">События</a><a href="#fon">Фон</a><a href="#deneyim">Опыт</a><a href="#hayal">Мечты</a><a href="#formula">Формула</a><a href="#kviz">Квиз</a>
     </nav>
+    <a class="wa-ic" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#i-wa"/></svg></a>
     <a class="btn btn-red btn-sm" href="#platforma">Платформа</a>
   </div>
 </header>
@@ -664,6 +680,7 @@ section>.wrap{position:relative;z-index:1}
         <a class="btn btn-red btn-lg btn-glow" href="#intro">Начать разбор</a>
         <a class="btn btn-white btn-lg" href="#platforma">Посмотреть платформу</a>
       </div>
+      <div class="hero-wa"><a class="wa-link" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Вопрос по платформе? Пиши в WhatsApp</a></div>
     </div>
   </div>
 </section>
@@ -926,7 +943,7 @@ section>.wrap{position:relative;z-index:1}
 
     <div class="soft-cta rv">
       <p>Эту историю собрал ты. На B1.<small>Таких разборов на платформе 128. От первого «merhaba» до C1.</small></p>
-      <a class="btn btn-red btn-sm" href="#platforma">Что на платформе</a>
+      <div style="display:flex;gap:10px;align-items:center"><a class="wa-ic" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg><use href="#i-wa"/></svg></a><a class="btn btn-red btn-sm" href="#platforma">Что на платформе</a></div>
     </div>
   </div>
 </section>
@@ -1097,6 +1114,7 @@ section>.wrap{position:relative;z-index:1}
         <ul><li>128 гайдов по грамматике</li><li>131 блок лексики по темам</li><li>109 интерактивных ресурсов</li><li>32 блока по экзаменам A1–C1</li><li>36 гайдов по работе</li><li>1716 материалов по уровням</li><li>Маршрут A0 → C1 без «а что дальше»</li></ul>
         <div class="pr"><small>один раз · доступ навсегда</small><b style="font-size:48px">$30</b></div>
         <a class="btn btn-red btn-glow" style="width:100%;margin-top:14px" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener">Приобрести</a>
+        <a class="wa-link" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Не проходит оплата? Купить через WhatsApp</a>
       </div>
     </div>
     <div class="kz rv">
@@ -1145,7 +1163,7 @@ section>.wrap{position:relative;z-index:1}
     <div class="faq">
       <details class="rv"><summary>Я совсем с нуля. Мне подойдёт?</summary><p>Да. Маршрут начинается с A0: алфавит, звуки, гармония гласных, первые 500 слов. Идёшь по ступеням и не гадаешь, что дальше.</p></details>
       <details class="rv"><summary>Это подписка?</summary><p>Нет. $30 один раз, доступ навсегда. Никаких продлений и списаний.</p></details>
-      <details class="rv"><summary>Как я получу доступ?</summary><p>Оплата проходит на lava.top, после неё ты получаешь доступ к платформе. Если что-то не пришло, напиши мне в Telegram, разберёмся.</p></details>
+      <details class="rv"><summary>Как я получу доступ?</summary><p>Оплата проходит на lava.top, после неё ты получаешь доступ к платформе. Если что-то не пришло, напиши мне в <a href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" style="color:#1FAF55;font-weight:700">WhatsApp</a> или Telegram, разберёмся.</p></details>
       <details class="rv"><summary>С телефона удобно?</summary><p>Да, всё открывается в браузере телефона. Скриншоты выше сняты с iPhone.</p></details>
       <details class="rv"><summary>Я из Казахстана, и оплата не проходит</summary><p>Напиши мне в <a href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">WhatsApp</a>. Купишь удобным способом, доступ открою сам.</p></details>
       <details class="rv"><summary>Не хочу покупать кота в мешке</summary><p>Правильно. Напиши мне до покупки. Покажу, что внутри, и честно скажу, подойдёт ли тебе.</p></details>
@@ -1162,7 +1180,8 @@ section>.wrap{position:relative;z-index:1}
       <p class="eyebrow" style="position:relative">Остались вопросы</p>
       <div class="big" style="position:relative;margin:10px 0">Напиши мне</div>
       <p class="muted" style="position:relative;max-width:460px;margin:0 auto 20px">Расскажу, что внутри, и подскажу, с какого уровня стартовать. Можно по-турецки: теперь ты знаешь, как рассказать о себе.</p>
-      <a class="btn btn-white" style="position:relative;color:var(--blue)" href="https://t.me/timaxmetov" target="_blank" rel="noopener">Telegram · @timaxmetov</a>
+      <div class="tg-btns"><a class="btn btn-wa" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+      <a class="btn btn-white" style="color:var(--blue)" href="https://t.me/timaxmetov" target="_blank" rel="noopener">Telegram · @timaxmetov</a></div>
     </div>
   </div>
 
@@ -1191,11 +1210,12 @@ section>.wrap{position:relative;z-index:1}
 <footer>
   <span class="script">Anlat. Dinliyorum.</span>
   <p style="margin:6px 0 16px">Рассказывай. Я слушаю.</p>
-  <p>Тимур · <a href="https://t.me/timaxmetov" target="_blank" rel="noopener">@timaxmetov</a> · Timur Turkish · Alterna Timur A0–C1</p>
+  <p>Тимур · <a href="https://t.me/timaxmetov" target="_blank" rel="noopener">@timaxmetov</a> · <a href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" style="color:#1FAF55;font-weight:700">WhatsApp</a> · Timur Turkish · Alterna Timur A0–C1</p>
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="t"><b>$30 · навсегда</b>Alterna Timur A0 → C1</div>
+  <div class="t"><b>$30 <small style="font-size:12px;font-weight:600;color:var(--ink-2)">навсегда</small></b><span class="sub">Alterna Timur A0 → C1</span></div>
+  <a class="wa-ic" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener" aria-label="Купить через WhatsApp"><svg><use href="#i-wa"/></svg></a>
   <a class="btn btn-red" href="https://app.lava.top/products/2cdbb9f8-e65b-443e-8d2c-4fea4c121e41" target="_blank" rel="noopener">Приобрести</a>
 </div>
 
@@ -1652,7 +1672,8 @@ const MODS = [
     if (i >= Q.length){ const ok = score >= 6;
       box.innerHTML = `<div class="qres"><p class="eyebrow">Результат</p><div class="big">${score} / ${Q.length}</div>
         <p class="lead" style="margin:14px auto">${ok ? 'Ты только что рассказал историю на B1. Серьёзно.' : 'Почти. Пролистай шпаргалку ниже и попробуй ещё раз.'}</p>
-        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn-white" id="qAgain">Ещё раз</button><a class="btn btn-red" href="#platforma">Что дальше, после B1</a></div></div>`;
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn-white" id="qAgain">Ещё раз</button><a class="btn btn-red" href="#platforma">Что дальше, после B1</a></div>
+        <p style="margin-top:16px"><a class="wa-link" href="https://wa.me/message/RCHLEOGGLZ5OC1" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Спросить, с какого уровня начать</a></p></div>`;
       $('#qAgain').onclick = () => { i = 0; score = 0; render(); };
       if (ok) confetti(); return; }
     const [q, o, a, exp] = Q[i];
